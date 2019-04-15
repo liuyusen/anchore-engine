@@ -73,24 +73,24 @@ jobs:
   
   integration_tests:
     machine: true
-      working_directory: ~/build/anchore-engine
-      steps:
-        - checkout
-        - restore_cache:
-            keys:
-              - v1-dependencies-{{ checksum "requirements.txt" }}
-              # fallback to using the latest cache if no exact match is found
-              - v1-dependencies-
-        - run:
-            name: install dependencies
-            command: |
-              pip install --upgrade pip
-              pip install --upgrade tox
-              pip install --upgrade docker-compose
-        - run:
-            name: run integration test
-            command: |
-              scripts/tests/test_with_deps.sh test/integration/
+    working_directory: ~/build/anchore-engine
+    steps:
+      - checkout
+      - restore_cache:
+          keys:
+            - v1-dependencies-{{ checksum "requirements.txt" }}
+            # fallback to using the latest cache if no exact match is found
+            - v1-dependencies-
+      - run:
+          name: install dependencies
+          command: |
+            pip install --upgrade pip
+            pip install --upgrade tox
+            pip install --upgrade docker-compose
+      - run:
+          name: run integration test
+          command: |
+            scripts/tests/test_with_deps.sh test/integration/
   build:
     docker:
     - image: docker:stable-git
