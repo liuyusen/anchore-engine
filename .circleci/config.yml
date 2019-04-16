@@ -85,8 +85,8 @@ jobs:
       - run:
           name: Install py3 and deps
           command: |
-            apt update -y
-            apt install -y python3 python3-dev python3-pip
+            sudo apt-get update -y
+            sudo apt-get install -y python3 python3-dev python3-pip
       - run:
           name: install dependencies
           command: |
