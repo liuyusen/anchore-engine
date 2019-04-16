@@ -96,7 +96,7 @@ jobs:
       - run:
           name: run integration test
           command: |
-            scripts/tests/test_with_deps.sh test/integration/
+            ./scripts/tests/test_with_deps.sh test/integration/
   build:
     docker:
     - image: docker:stable-git
